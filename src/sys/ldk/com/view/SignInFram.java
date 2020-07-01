@@ -171,8 +171,8 @@ public class SignInFram extends JFrame {
 				student.tString();
 				JOptionPane.showMessageDialog(this, "登录成功");
 				setVisible(false);
-				InterfaceFrame interfaceframe = new InterfaceFrame(s.getimage(id,student));
-				interfaceframe.setVisible(true);
+				//InterfaceFrame interfaceframe = new InterfaceFrame(s.getimage(id,student));
+				//interfaceframe.setVisible(true);
 			}
 			
 		} catch (SQLException e1) {

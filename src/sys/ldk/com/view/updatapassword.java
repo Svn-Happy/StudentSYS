@@ -7,10 +7,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class updatapassword extends JFrame {
 
@@ -64,8 +68,18 @@ public class updatapassword extends JFrame {
 		contentPane.add(passwordField_1);
 		
 		JButton btnNewButton = new JButton("完成");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				resetRegInfo(e);
+			}
+		});
 		btnNewButton.setFont(new Font("微软雅黑", Font.PLAIN, 18));
 		btnNewButton.setBounds(141, 188, 113, 27);
 		contentPane.add(btnNewButton);
+	}
+
+	protected void resetRegInfo(ActionEvent e) {
+		JOptionPane.showMessageDialog(this, "修改密码成功");
+		setVisible(false);
 	}
 }

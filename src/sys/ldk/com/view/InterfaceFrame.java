@@ -29,6 +29,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 
 public class InterfaceFrame extends JFrame {
 
@@ -52,9 +53,6 @@ public class InterfaceFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public InterfaceFrame() {
-		
-	}
-	public InterfaceFrame(Student student) {
 		setBackground(Color.BLACK);
 		getContentPane().setBackground(Color.WHITE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -131,6 +129,7 @@ public class InterfaceFrame extends JFrame {
 		mnNewMenu_5.setFont(new Font("微软雅黑", Font.PLAIN, 18));
 		menuBar.add(mnNewMenu_5);
 	}
+	
 
 	private static void addPopup(Component component, final JPopupMenu popup) {
 		component.addMouseListener(new MouseAdapter() {

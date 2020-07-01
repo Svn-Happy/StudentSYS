@@ -15,6 +15,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JTextField;
@@ -82,6 +83,11 @@ public class newPass extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("联系客服");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				resetRegInfo(e);
+			}
+		});
 		btnNewButton_2.setFont(new Font("微软雅黑", Font.PLAIN, 18));
 		btnNewButton_2.setBounds(278, 213, 105, 33);
 		contentPane.add(btnNewButton_2);
@@ -98,7 +104,18 @@ public class newPass extends JFrame {
 		contentPane.add(lblNewLabel_2);
 		
 		JButton btnNewButton_3 = new JButton("下一步");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				updatapassword frame = new updatapassword();
+				frame.setVisible(true);
+			}
+		});
 		btnNewButton_3.setBounds(294, 284, 113, 27);
 		contentPane.add(btnNewButton_3);
+	}
+
+	protected void resetRegInfo(ActionEvent e) {
+		JOptionPane.showMessageDialog(this, "客服电话：XXX-XXX XXXX");
 	}
 }
