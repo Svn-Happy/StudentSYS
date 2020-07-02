@@ -77,7 +77,7 @@ public class newPass extends JFrame {
 				StudentDao st = new StudentDao();
 				String message = "debug";
 				try {
-					message = st.newpassword(Integer.parseInt(idTextField.getText().toString()));
+					message = st.newpassword(idTextField.getText().toString());
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -127,7 +127,7 @@ public class newPass extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(Captcha.equals(CaptchaTextField.getText().toString())){
 					setVisible(false);
-					updatapassword frame = new updatapassword(Integer.parseInt(idTextField.getText().toString()));
+					updatapassword frame = new updatapassword(idTextField.getText().toString());
 					frame.setVisible(true);
 				}
 				else

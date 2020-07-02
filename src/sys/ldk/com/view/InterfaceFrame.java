@@ -1,59 +1,30 @@
 package sys.ldk.com.view;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
+import javax.swing.JPopupMenu;
+import javax.swing.JTextField;
 
 import sys.ldk.com.entity.Student;
 import sys.ldk.com.model.StudentDao;
-
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JLabel;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-
-import java.awt.Color;
-import java.awt.Font;
-import javax.swing.ImageIcon;
-import javax.swing.SwingConstants;
-import javax.swing.JRadioButtonMenuItem;
-import javax.swing.JButton;
-import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JPopupMenu;
-import java.awt.Component;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Toolkit;
-import javax.swing.JSlider;
-import javax.swing.JSeparator;
-import javax.swing.JTree;
-import javax.swing.JList;
-import javax.swing.JSpinner;
-import javax.swing.JTextArea;
-import javax.swing.JEditorPane;
-import javax.swing.JTabbedPane;
-import javax.swing.JLayeredPane;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import javax.swing.JTextField;
-import javax.swing.border.LineBorder;
-import javax.swing.border.MatteBorder;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
-import java.awt.Panel;
-import javax.swing.JDesktopPane;
-import java.awt.Button;
 
 public class InterfaceFrame extends JFrame {
 
@@ -78,8 +49,15 @@ public class InterfaceFrame extends JFrame {
 	 * Create the frame.
 	 */
 	//public InterfaceFrame(Student);
+	
+	JLabel namelabel2 = new JLabel();
+	JLabel sexlabel2 = new JLabel();
+	JLabel agelabel2 = new JLabel();
+	JLabel telelabel2 = new JLabel();
+	JLabel emaillabel2 = new JLabel();
 	JPanel personalinfo = new JPanel();
 	JPanel updatapersonalinfo = new JPanel();
+	JPanel panel = new JPanel();
 	private JTextField teletext;
 	private JTextField nametext;
 	private JTextField sextext;
@@ -118,6 +96,12 @@ public class InterfaceFrame extends JFrame {
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("修改密码");
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				newPass frame = new newPass();
+				frame.setVisible(true);
+			}
+		});
 		mntmNewMenuItem_2.setFont(new Font("微软雅黑", Font.PLAIN, 15));
 		mntmNewMenuItem_2.setForeground(Color.BLACK);
 		mntmNewMenuItem_2.setBackground(Color.WHITE);
@@ -137,6 +121,11 @@ public class InterfaceFrame extends JFrame {
 		mnNewMenu.add(mntmNewMenuItem_4);
 		
 		JMenuItem mntmNewMenuItem_5 = new JMenuItem("退出登录");
+		mntmNewMenuItem_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
 		mntmNewMenuItem_5.setFont(new Font("微软雅黑", Font.PLAIN, 15));
 		mntmNewMenuItem_5.setForeground(Color.BLACK);
 		mntmNewMenuItem_5.setBackground(Color.WHITE);
@@ -163,9 +152,10 @@ public class InterfaceFrame extends JFrame {
 		menuBar.add(mnNewMenu_5);
 		getContentPane().setLayout(null);
 		personalinfo.setBounds(0, 0, 782, 419);
-		getContentPane().add(personalinfo);
+		getContentPane().add(panel);
 		personalinfo.setBackground(Color.WHITE);
 		personalinfo.setLayout(null);
+		personalinfo.hide();
 		
 		JLabel idlabel = new JLabel("学号：");
 		idlabel.setFont(new Font("微软雅黑", Font.PLAIN, 18));
@@ -174,7 +164,7 @@ public class InterfaceFrame extends JFrame {
 		
 		JLabel idlabel2 = new JLabel(student.getId());
 		idlabel2.setFont(new Font("微软雅黑", Font.PLAIN, 18));
-		idlabel2.setBounds(331, 35, 175, 18);
+		idlabel2.setBounds(343, 35, 175, 18);
 		personalinfo.add(idlabel2);
 		
 		JLabel namelabel = new JLabel("姓名：");
@@ -182,14 +172,14 @@ public class InterfaceFrame extends JFrame {
 		namelabel.setBounds(140, 90, 72, 18);
 		personalinfo.add(namelabel);
 		
-		JLabel namelabel2 = new JLabel(student.getName());
+		namelabel2 = new JLabel(student.getName());
 		namelabel2.setFont(new Font("微软雅黑", Font.PLAIN, 18));
-		namelabel2.setBounds(331, 90, 175, 18);
+		namelabel2.setBounds(343, 90, 175, 18);
 		personalinfo.add(namelabel2);
 		
-		JLabel sexlabel2 = new JLabel(student.getSex());
+		sexlabel2 = new JLabel(student.getSex());
 		sexlabel2.setFont(new Font("微软雅黑", Font.PLAIN, 18));
-		sexlabel2.setBounds(343, 140, 72, 18);
+		sexlabel2.setBounds(343, 140, 175, 18);
 		personalinfo.add(sexlabel2);
 		
 		JLabel agelabel = new JLabel("年龄：");
@@ -212,19 +202,20 @@ public class InterfaceFrame extends JFrame {
 		sexlabel.setBounds(140, 140, 72, 18);
 		personalinfo.add(sexlabel);
 		
-		JLabel agelabel2 = new JLabel(student.getAge() + " ");
+		
+		agelabel2 = new JLabel(student.getAge() + " ");
 		agelabel2.setFont(new Font("微软雅黑", Font.PLAIN, 18));
 		agelabel2.setBounds(343, 192, 72, 18);
 		personalinfo.add(agelabel2);
-		
-		JLabel telelabel2 = new JLabel(student.getTele());
+
+		telelabel2 = new JLabel(student.getTele());
 		telelabel2.setFont(new Font("微软雅黑", Font.PLAIN, 18));
-		telelabel2.setBounds(343, 296, 72, 18);
+		telelabel2.setBounds(343, 296, 210, 18);
 		personalinfo.add(telelabel2);
 		
-		JLabel emaillabel2 = new JLabel(student.getEmail());
+		emaillabel2 = new JLabel(student.getEmail());
 		emaillabel2.setFont(new Font("微软雅黑", Font.PLAIN, 18));
-		emaillabel2.setBounds(343, 245, 72, 18);
+		emaillabel2.setBounds(343, 245, 210, 18);
 		
 		personalinfo.add(emaillabel2);
 		
@@ -283,6 +274,7 @@ public class InterfaceFrame extends JFrame {
 		updatapersonalinfo.add(sexlabelupdata);
 		
 		JButton btnNewButton_2 = new JButton("保存");
+		btnNewButton_2.setFont(new Font("微软雅黑", Font.PLAIN, 18));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Updatepersonalinfo(e,student);
@@ -292,30 +284,44 @@ public class InterfaceFrame extends JFrame {
 		updatapersonalinfo.add(btnNewButton_2);
 		
 		JButton btnNewButton_1_1 = new JButton("退出");
+		btnNewButton_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				updatapersonalinfo.hide();
+				personalinfo.show();
+
+				getContentPane().add(personalinfo);
+			}
+		});
+		btnNewButton_1_1.setFont(new Font("微软雅黑", Font.PLAIN, 18));
 		btnNewButton_1_1.setBounds(453, 355, 135, 33);
 		updatapersonalinfo.add(btnNewButton_1_1);
 		
 		teletext = new JTextField();
+		teletext.setFont(new Font("微软雅黑", Font.PLAIN, 18));
 		teletext.setBounds(343, 291, 232, 33);
 		teletext.setColumns(10);
 		updatapersonalinfo.add(teletext);
 		
 		nametext = new JTextField();
+		nametext.setFont(new Font("微软雅黑", Font.PLAIN, 18));
 		nametext.setColumns(10);
 		nametext.setBounds(343, 89, 232, 33);
 		updatapersonalinfo.add(nametext);
 		
 		sextext = new JTextField();
+		sextext.setFont(new Font("微软雅黑", Font.PLAIN, 18));
 		sextext.setColumns(10);
 		sextext.setBounds(343, 139, 232, 33);
 		updatapersonalinfo.add(sextext);
 		
 		agetext = new JTextField();
+		agetext.setFont(new Font("微软雅黑", Font.PLAIN, 18));
 		agetext.setColumns(10);
 		agetext.setBounds(343, 191, 232, 33);
 		updatapersonalinfo.add(agetext);
 		
 		emailtext = new JTextField();
+		emailtext.setFont(new Font("微软雅黑", Font.PLAIN, 18));
 		emailtext.setColumns(10);
 		emailtext.setBounds(343, 244, 232, 33);
 		updatapersonalinfo.add(emailtext);
@@ -325,19 +331,32 @@ public class InterfaceFrame extends JFrame {
 		idlabelupdata2.setBounds(343, 37, 175, 18);
 		updatapersonalinfo.add(idlabelupdata2);
 		
+		
+		panel.setBounds(0, 0, 782, 419);
+		getContentPane().add(panel);
+		
 	}
 	
 
 	
 	protected void updatapersonalinfoShow(ActionEvent e) {
-		personalinfo.removeAll();
-		personalinfo.add(updatapersonalinfo);
-		personalinfo.validate();
-	    personalinfo.repaint();
+		personalinfo.hide();
+		updatapersonalinfo.show();
+		getContentPane().add(updatapersonalinfo);
+
 	}
 
 
 	protected void Updatepersonalinfo(ActionEvent e,Student student) {
+		
+		if((	("".equals(nametext.getText().toString()) || nametext.getText().toString() == null) ||
+				("".equals(sextext.getText().toString()) || sextext.getText().toString() == null) ||
+				(agetext.getText() == null) ||
+				("".equals(emailtext.getText().toString()) || emailtext.getText().toString() == null) ||
+				("".equals(teletext.getText().toString()) || teletext.getText().toString() == null))) {
+			JOptionPane.showMessageDialog(this, "信息不能为空");
+			return;
+		}
 		
 		StudentDao s = new StudentDao();
 		student.setName(nametext.getText().toString());
@@ -345,20 +364,21 @@ public class InterfaceFrame extends JFrame {
 		student.setAge(Integer.parseInt(agetext.getText()));
 		student.setEmail(emailtext.getText().toString());
 		student.setTele(teletext.getText().toString());
+		student.tString();
 
-		if((	("".equals(student.getName()) || student.getName() == null) &&
-				("".equals(student.getSex()) || student.getSex() == null) && 
-				("".equals(student.getAge()) || student.getAge() == 0) &&
-				("".equals(student.getEmail()) || student.getEmail() == null) && 
-				("".equals(student.getTele()) || student.getTele() == null))) {
-			
-			JOptionPane.showMessageDialog(this, "信息不能为空");
-			return;
-		}
+
 		
 		try {
 			
 			s.updateUser(student);
+			
+			namelabel2.setText(student.getName());
+			sexlabel2.setText(student.getSex());
+			agelabel2.setText(agetext.getText());
+			telelabel2.setText(student.getTele());
+			emaillabel2.setText(student.getEmail());
+
+			student.tString();
 			
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
@@ -366,18 +386,24 @@ public class InterfaceFrame extends JFrame {
 		}
 		updatapersonalinfo.hide();
 		personalinfo.show();
-		
+
+		getContentPane().add(personalinfo);
+
 	}
 
 
 	protected void PersonalinfoHideout(ActionEvent e) {//退出个人信息
 		personalinfo.hide();
+		panel.show();
+		getContentPane().add(panel);
 		
 	}
 
 
 	protected void PersonalinfoShow(ActionEvent e) {//进入个人信息
+		panel.hide();
 		personalinfo.show();
+		getContentPane().add(personalinfo);
 		
 	}
 

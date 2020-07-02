@@ -148,16 +148,18 @@ public class StudentDao {
 		ps.setString(4, student.getEmail());
 		ps.setString(5, student.getTele());
 		ps.setString(6, student.getId());
+		System.out.println("over");
+		student.tString();
 		
 		return ps.executeUpdate();
 	}
 	
 	//修改密码或忘记密码（短信验证方面）
-	public static String newpassword(int id) throws SQLException {
+	public static String newpassword(String id) throws SQLException {
 		Connection conn = DBUtil.getConn();
 		String sql = "select * from tb_stu_image where id=?";
 		PreparedStatement ps = conn.prepareStatement(sql);
-		ps.setInt(1,id);
+		ps.setString(1,id);
 		
 		ResultSet rls = ps.executeQuery();
 		//根据结果集是否为空判断用户是否存在 
@@ -194,6 +196,7 @@ public class StudentDao {
 		//获取链接多想
 		Connection conn = DBUtil.getConn();
 		//修改sql语句
+		System.out.println(student.getId() + student.getPassword());
 		String sql = "update tb_stu_info set password = ? where id = ?" ;
 		//密码修改失败，是否存在语法错误
 		PreparedStatement ps = conn.prepareStatement(sql);

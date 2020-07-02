@@ -172,6 +172,8 @@ public class SignInFram extends JFrame {
 			StudentDao s = new StudentDao();
 			s.selectUser(id, password);
 			Student student = s.selectUser(id, password);
+			student = s.getimage(id,student);
+			
 			if(student == null) 
 				JOptionPane.showMessageDialog(this, "账户或密码错误");
 			else {

@@ -34,7 +34,7 @@ public class updatapassword extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					int id = 0;
+					String id = null;
 					updatapassword frame = new updatapassword(id);
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -47,7 +47,7 @@ public class updatapassword extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public updatapassword(int id) {
+	public updatapassword(String id) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -76,7 +76,7 @@ public class updatapassword extends JFrame {
 		JButton btnNewButton = new JButton("完成");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				resetRegInfo(e);
+				resetRegInfo(e,id);
 			}
 		});
 		btnNewButton.setFont(new Font("微软雅黑", Font.PLAIN, 18));
@@ -84,9 +84,9 @@ public class updatapassword extends JFrame {
 		contentPane.add(btnNewButton);
 	}
 
-	protected void resetRegInfo(ActionEvent e)  {
+	protected void resetRegInfo(ActionEvent e,String id)  {
 		//获取注册的用户名 密码 邮箱
-		String id = passwordField.getText().toString();
+		String Id = id;
 		String password = passwordField_1.getText().toString();
 		String rpassword = passwordField.getText().toString();
 		//判断非空
@@ -95,7 +95,7 @@ public class updatapassword extends JFrame {
 			return;
 		}
 		if("".equals(password) || password == null) {
-			JOptionPane.showMessageDialog(this, "注册密码不能为空");
+			JOptionPane.showMessageDialog(this, "修改密码不能为空");
 			return;//结束当前方法不再往下执行
 		}
 		if(!rpassword.equals(password)) {
@@ -107,7 +107,7 @@ public class updatapassword extends JFrame {
 			return;
 		}
 		Student s = new Student();
-		s.setId(passwordField.getText().toString());
+		s.setId(Id);
 		s.setPassword(passwordField_1.getText().toString());
 		StudentDao sd = new StudentDao();
 		try {
