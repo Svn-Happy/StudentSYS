@@ -1,27 +1,22 @@
 package sys.ldk.com.view;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import sys.ldk.com.model.StudentDao;
-
-import java.awt.Toolkit;
-import java.awt.Color;
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.sql.SQLException;
-import java.awt.event.ActionEvent;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JRadioButtonMenuItem;
-import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JTextField;
 
 public class newPass extends JFrame {
    //以下改动
@@ -108,7 +103,7 @@ public class newPass extends JFrame {
 			}
 		});
 		btnNewButton_2.setFont(new Font("微软雅黑", Font.PLAIN, 18));
-		btnNewButton_2.setBounds(278, 213, 105, 33);
+		btnNewButton_2.setBounds(278, 213, 111, 33);
 		contentPane.add(btnNewButton_2);
 		
 		CaptchaTextField = new JTextField();
@@ -125,7 +120,16 @@ public class newPass extends JFrame {
 		JButton btnNewButton_3 = new JButton("下一步");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(Captcha.equals(CaptchaTextField.getText().toString())){
+				StudentDao st = new StudentDao();
+				String message = "debug";
+				try {
+					message = st.newpassword(idTextField.getText().toString());
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				if(message.equals("该用户不存在")) JOptionPane.showMessageDialog(contentPane, message);
+				else if(Captcha.equals(CaptchaTextField.getText().toString())){
 					setVisible(false);
 					updatapassword frame = new updatapassword(idTextField.getText().toString());
 					frame.setVisible(true);
@@ -136,6 +140,18 @@ public class newPass extends JFrame {
 		});
 		btnNewButton_3.setBounds(294, 284, 113, 27);
 		contentPane.add(btnNewButton_3);
+		
+		JButton btnNewButton_3_1 = new JButton("取消");
+		btnNewButton_3_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+			}
+		});
+		btnNewButton_3_1.setBounds(14, 284, 113, 27);
+		contentPane.add(btnNewButton_3_1);
+		
+
+		setLocationRelativeTo(null);
 	}
 
 	protected void resetRegInfo(ActionEvent e) {

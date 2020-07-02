@@ -297,30 +297,35 @@ public class InterfaceFrame extends JFrame {
 		updatapersonalinfo.add(btnNewButton_1_1);
 		
 		teletext = new JTextField();
+		teletext.setText(student.getTele());
 		teletext.setFont(new Font("微软雅黑", Font.PLAIN, 18));
 		teletext.setBounds(343, 291, 232, 33);
 		teletext.setColumns(10);
 		updatapersonalinfo.add(teletext);
 		
 		nametext = new JTextField();
+		nametext.setText(student.getName());
 		nametext.setFont(new Font("微软雅黑", Font.PLAIN, 18));
 		nametext.setColumns(10);
 		nametext.setBounds(343, 89, 232, 33);
 		updatapersonalinfo.add(nametext);
 		
 		sextext = new JTextField();
+		sextext.setText(student.getSex());
 		sextext.setFont(new Font("微软雅黑", Font.PLAIN, 18));
 		sextext.setColumns(10);
 		sextext.setBounds(343, 139, 232, 33);
 		updatapersonalinfo.add(sextext);
 		
 		agetext = new JTextField();
+		agetext.setText(String.valueOf(student.getAge()));
 		agetext.setFont(new Font("微软雅黑", Font.PLAIN, 18));
 		agetext.setColumns(10);
 		agetext.setBounds(343, 191, 232, 33);
 		updatapersonalinfo.add(agetext);
 		
 		emailtext = new JTextField();
+		emailtext.setText(student.getEmail());
 		emailtext.setFont(new Font("微软雅黑", Font.PLAIN, 18));
 		emailtext.setColumns(10);
 		emailtext.setBounds(343, 244, 232, 33);
@@ -335,6 +340,8 @@ public class InterfaceFrame extends JFrame {
 		panel.setBounds(0, 0, 782, 419);
 		getContentPane().add(panel);
 		
+
+		setLocationRelativeTo(null);
 	}
 	
 

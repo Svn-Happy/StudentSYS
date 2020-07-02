@@ -1,25 +1,21 @@
 package sys.ldk.com.view;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 
 import sys.ldk.com.entity.Student;
 import sys.ldk.com.model.StudentDao;
-
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
-import java.awt.Font;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.sql.SQLException;
-import java.awt.event.ActionEvent;
 
 public class updatapassword extends JFrame {
 
@@ -82,6 +78,9 @@ public class updatapassword extends JFrame {
 		btnNewButton.setFont(new Font("微软雅黑", Font.PLAIN, 18));
 		btnNewButton.setBounds(141, 188, 113, 27);
 		contentPane.add(btnNewButton);
+		
+
+		setLocationRelativeTo(null);
 	}
 
 	protected void resetRegInfo(ActionEvent e,String id)  {

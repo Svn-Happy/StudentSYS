@@ -1,7 +1,5 @@
 package sys.ldk.com.entity;
 
-import org.omg.Messaging.SyncScopeHelper;
-
 //这个实体类与数据库表中的tb_stu_info这个表对应
 //对应表中的字段封装成类中的属性（成员变量）
 //表名可以看做一个类名（这个类名不一定要与数据库表名一致）

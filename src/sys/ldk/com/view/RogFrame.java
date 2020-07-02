@@ -10,21 +10,18 @@ import java.sql.SQLException;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 
 import sys.ldk.com.entity.Student;
 import sys.ldk.com.model.StudentDao;
-import javax.swing.JPasswordField;
 
 public class RogFrame extends JFrame {
 
@@ -63,13 +60,9 @@ public class RogFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(237, 31, 32, 32);
-		lblNewLabel.setIcon(new ImageIcon(RogFrame.class.getResource("/sys/ldk/com/image/\u7CFB\u7EDF @2x-1.png")));
-		lblNewLabel.setFont(new Font("微软雅黑", Font.PLAIN, 20));
-		
 		JLabel lblNewLabel_1 = new JLabel("\u5B66\u751F\u4FE1\u606F\u7BA1\u7406\u7CFB\u7EDF");
-		lblNewLabel_1.setBounds(279, 35, 160, 28);
+		lblNewLabel_1.setIcon(new ImageIcon(RogFrame.class.getResource("/sys/ldk/com/image/系统 @2x-1.png")));
+		lblNewLabel_1.setBounds(226, 35, 213, 28);
 		lblNewLabel_1.setFont(new Font("微软雅黑", Font.PLAIN, 20));
 		
 		JLabel lblNewLabel_2 = new JLabel("学号");
@@ -88,7 +81,7 @@ public class RogFrame extends JFrame {
 		lblNewLabel_2_1.setIcon(new ImageIcon(RogFrame.class.getResource("/sys/ldk/com/image/\u5BC6 \u7801.png")));
 		
 		JButton btnRegButton = new JButton("\u6CE8\u518C");
-		btnRegButton.setBounds(198, 282, 83, 35);
+		btnRegButton.setBounds(125, 282, 83, 35);
 		btnRegButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				reg(e);
@@ -98,7 +91,7 @@ public class RogFrame extends JFrame {
 		btnRegButton.setFont(new Font("微软雅黑", Font.PLAIN, 19));
 		
 		JButton btnResetButton = new JButton("\u91CD\u7F6E");
-		btnResetButton.setBounds(379, 282, 83, 35);
+		btnResetButton.setBounds(307, 282, 83, 35);
 		btnResetButton.setAction(action);
 		btnResetButton.setBackground(Color.WHITE);
 		btnResetButton.setForeground(Color.BLACK);
@@ -114,7 +107,6 @@ public class RogFrame extends JFrame {
 		contentPane.add(lblNewLabel_2);
 		contentPane.add(lblNewLabel_2_1);
 		contentPane.add(btnRegButton);
-		contentPane.add(lblNewLabel);
 		contentPane.add(lblNewLabel_1);
 		contentPane.add(btnResetButton);
 		contentPane.add(idTextField);
@@ -132,6 +124,22 @@ public class RogFrame extends JFrame {
 		JLabel label = new JLabel("(请再次输入密码)");
 		label.setBounds(164, 225, 138, 18);
 		contentPane.add(label);
+		
+		JButton btnRegButton_1 = new JButton("返回");
+		btnRegButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				SignInFram signframe = new SignInFram();
+				signframe.setVisible(true);
+			}
+		});
+		btnRegButton_1.setFont(new Font("微软雅黑", Font.PLAIN, 19));
+		btnRegButton_1.setBackground(Color.WHITE);
+		btnRegButton_1.setBounds(481, 282, 83, 35);
+		contentPane.add(btnRegButton_1);
+		
+
+		setLocationRelativeTo(null);
 	}
 	protected void reg(ActionEvent e) {
 		//获取注册的用户名 密码 邮箱
@@ -189,10 +197,12 @@ public class RogFrame extends JFrame {
 		//获取注册的用户名 密码 邮箱
 		String id = idTextField.getText().toString();
 		String password = passwordTextField.getText().toString();
+		String password2 = passwordField.getText().toString();
 		
 		//直接清空操作
 		idTextField.setText("");
 		passwordTextField.setText("");
+		passwordField.setText("");
 		
 	}
 	private class SwingAction extends AbstractAction {
@@ -202,5 +212,7 @@ public class RogFrame extends JFrame {
 		}
 		public void actionPerformed(ActionEvent e) {
 		}
+		
 	}
+	
 }

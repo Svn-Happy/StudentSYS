@@ -1,11 +1,9 @@
 package sys.ldk.com.model;
 
-import sys.ldk.com.model.JavaEmail;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Random;
 
 import sys.ldk.com.entity.Student;
@@ -44,6 +42,7 @@ public class StudentDao {
 		ps.setString(2, password);
 		ps2.setString(1, id);
 		int row = ps.executeUpdate();
+		int row2 = ps2.executeUpdate();
 		
 		DBUtil.closeConn(conn);
 		ps.close();
