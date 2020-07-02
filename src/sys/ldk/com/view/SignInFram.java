@@ -34,6 +34,7 @@ import javax.swing.JPasswordField;
 import java.awt.SystemColor;
 import javax.swing.UIManager;
 import javax.swing.SwingConstants;
+import javax.swing.JDesktopPane;
 
 public class SignInFram extends JFrame {
 
@@ -76,62 +77,17 @@ public class SignInFram extends JFrame {
 		contentPane.setForeground(new Color(0, 0, 0));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(237, 34, 32, 32);
-		lblNewLabel.setIcon(new ImageIcon(SignInFram.class.getResource("/sys/ldk/com/image/系统 @2x-1.png")));
-		
-		JLabel lblNewLabel_1 = new JLabel("学生信息管理系统");
-		lblNewLabel_1.setBounds(277, 34, 160, 28);
-		lblNewLabel_1.setFont(new Font("微软雅黑", Font.PLAIN, 20));
-		
-		JLabel lblNewLabel_2 = new JLabel("学号");
-		lblNewLabel_2.setBounds(175, 135, 76, 32);
-		lblNewLabel_2.setIcon(new ImageIcon(SignInFram.class.getResource("/sys/ldk/com/image/账号-1.png")));
-		lblNewLabel_2.setFont(new Font("微软雅黑", Font.PLAIN, 20));
-		
-		JLabel lblNewLabel_3 = new JLabel("密码");
-		lblNewLabel_3.setBounds(175, 209, 76, 32);
-		lblNewLabel_3.setIcon(new ImageIcon(SignInFram.class.getResource("/sys/ldk/com/image/密码.png")));
-		lblNewLabel_3.setFont(new Font("微软雅黑", Font.PLAIN, 20));
-		
-		idTextField = new JTextField();
-		idTextField.setBounds(295, 137, 178, 31);
-		idTextField.setFont(new Font("微软雅黑", Font.PLAIN, 18));
-		idTextField.setColumns(10);
-		
-		JButton btnNewButton = new JButton("登录");
-		btnNewButton.setBounds(196, 290, 85, 37);
-		btnNewButton.setFont(new Font("微软雅黑", Font.PLAIN, 20));
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				resetRegInfo(e);
-			}
-		});
-		
-		JButton btnNewButton_1 = new JButton("注册");
-		btnNewButton_1.setBounds(368, 290, 85, 37);
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton_1.setAction(action);
-		btnNewButton_1.setFont(new Font("微软雅黑", Font.PLAIN, 20));
 		contentPane.setLayout(null);
-		contentPane.add(lblNewLabel_2);
-		contentPane.add(lblNewLabel_3);
-		contentPane.add(btnNewButton);
-		contentPane.add(lblNewLabel);
-		contentPane.add(lblNewLabel_1);
-		contentPane.add(idTextField);
-		contentPane.add(btnNewButton_1);
 		
-		passwordTextField = new JPasswordField();
-		passwordTextField.setFont(new Font("微软雅黑", Font.PLAIN, 18));
-		passwordTextField.setBounds(295, 209, 178, 32);
-		contentPane.add(passwordTextField);
+		JDesktopPane desktopPane = new JDesktopPane();
+		desktopPane.setBackground(Color.WHITE);
+		desktopPane.setBounds(0, 0, 682, 393);
+		contentPane.add(desktopPane);
+		desktopPane.setLayout(null);
 		
 		JButton btnNewButton_2 = new JButton("忘记密码");
+		btnNewButton_2.setBounds(502, 209, 103, 32);
+		desktopPane.add(btnNewButton_2);
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				resetPassword(e);
@@ -140,8 +96,59 @@ public class SignInFram extends JFrame {
 		btnNewButton_2.setHorizontalAlignment(SwingConstants.LEFT);
 		btnNewButton_2.setFont(new Font("微软雅黑", Font.PLAIN, 15));
 		btnNewButton_2.setBackground(Color.WHITE);
-		btnNewButton_2.setBounds(487, 209, 103, 32);
-		contentPane.add(btnNewButton_2);
+		
+		passwordTextField = new JPasswordField();
+		passwordTextField.setBounds(295, 209, 178, 32);
+		desktopPane.add(passwordTextField);
+		passwordTextField.setFont(new Font("微软雅黑", Font.PLAIN, 18));
+		
+		JButton btnNewButton_1 = new JButton("注册");
+		btnNewButton_1.setBounds(382, 292, 85, 37);
+		desktopPane.add(btnNewButton_1);
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton_1.setAction(action);
+		btnNewButton_1.setFont(new Font("微软雅黑", Font.PLAIN, 20));
+		
+		JLabel lblNewLabel_1 = new JLabel("学生信息管理系统");
+		lblNewLabel_1.setBounds(289, 36, 160, 28);
+		desktopPane.add(lblNewLabel_1);
+		lblNewLabel_1.setFont(new Font("微软雅黑", Font.PLAIN, 20));
+		
+		idTextField = new JTextField();
+		idTextField.setBounds(293, 138, 178, 31);
+		desktopPane.add(idTextField);
+		idTextField.setFont(new Font("微软雅黑", Font.PLAIN, 18));
+		idTextField.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(243, 34, 32, 32);
+		desktopPane.add(lblNewLabel);
+		lblNewLabel.setIcon(new ImageIcon(SignInFram.class.getResource("/sys/ldk/com/image/系统 @2x-1.png")));
+		
+		JButton btnNewButton = new JButton("登录");
+		btnNewButton.setBounds(210, 292, 85, 37);
+		desktopPane.add(btnNewButton);
+		btnNewButton.setFont(new Font("微软雅黑", Font.PLAIN, 20));
+		
+		JLabel lblNewLabel_3 = new JLabel("密码");
+		lblNewLabel_3.setBounds(179, 210, 76, 32);
+		desktopPane.add(lblNewLabel_3);
+		lblNewLabel_3.setIcon(new ImageIcon(SignInFram.class.getResource("/sys/ldk/com/image/密码.png")));
+		lblNewLabel_3.setFont(new Font("微软雅黑", Font.PLAIN, 20));
+		
+		JLabel lblNewLabel_2 = new JLabel("学号");
+		lblNewLabel_2.setBounds(184, 134, 76, 32);
+		desktopPane.add(lblNewLabel_2);
+		lblNewLabel_2.setIcon(new ImageIcon(SignInFram.class.getResource("/sys/ldk/com/image/账号-1.png")));
+		lblNewLabel_2.setFont(new Font("微软雅黑", Font.PLAIN, 20));
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				resetRegInfo(e);
+			}
+		});
 	}
 	protected void resetPassword(ActionEvent e) {
 		newPass frame = new newPass();
@@ -171,8 +178,8 @@ public class SignInFram extends JFrame {
 				student.tString();
 				JOptionPane.showMessageDialog(this, "登录成功");
 				setVisible(false);
-				//InterfaceFrame interfaceframe = new InterfaceFrame(s.getimage(id,student));
-				//interfaceframe.setVisible(true);
+				InterfaceFrame interfaceframe = new InterfaceFrame(student);
+				interfaceframe.setVisible(true);
 			}
 			
 		} catch (SQLException e1) {
